@@ -105,6 +105,27 @@ export default function (pi: ExtensionAPI) {
     message.stopReason !== "error" &&
     message.stopReason !== "aborted";
 
+  // Lifecycle hooks (turn_end / tool_execution_end / message_end) are awaited by Pi, so a summarizer call made
+  // from a hook keeps the run "streaming": Stop cannot complete until the hook returns. Bind every hook flush to
+  // the run's abort signal, and to a deadline so a stalled summarizer stream cannot hold the session forever.
+  // Batches are restored on abort, so nothing is lost; the next trigger retries them.
+  const HOOK_FLUSH_TIMEOUT_MS = 180_000;
+
+  const flushFromHook = async (ctx: any, delivery: "session" | "runtime"): Promise<FlushResult> => {
+    let runSignal: AbortSignal | undefined;
+    try {
+      runSignal = ctx.signal;
+    } catch {
+      // stale ctx: no run to bind to
+    }
+    const deadline = AbortSignal.timeout(HOOK_FLUSH_TIMEOUT_MS);
+    const result = await flushPending(ctx, { delivery, signal: runSignal ? AbortSignal.any([runSignal, deadline]) : deadline });
+    if (!result.ok && result.reason === "aborted" && deadline.aborted && !runSignal?.aborted) {
+      safeNotify(ctx, `pruner: summarizer gave no result within ${HOOK_FLUSH_TIMEOUT_MS / 1000}s; batches kept for the next trigger`, "warning");
+    }
+    return result;
+  };
+
   const trimBatchToPendingRange = (batch: CapturedBatch): CapturedBatch | null => {
     const currentFrontier = frontier.get();
     let toolCalls = batch.toolCalls;
@@ -472,7 +493,7 @@ export default function (pi: ExtensionAPI) {
     pendingBatches.push(batch);
 
     if (currentConfig.value.pruneOn === "every-turn") {
-      await flushPending(ctx, { delivery: "session" });
+      await flushFromHook(ctx, "session");
     } else {
       // Let the user know a batch is queued
       const n = pendingBatches.length;
@@ -507,7 +528,7 @@ export default function (pi: ExtensionAPI) {
     if (!(CONTEXT_TAG_TOOL_NAMES as readonly string[]).includes(event.toolName)) return;
     if (!currentConfig.value.enabled) return;
     if (currentConfig.value.pruneOn !== "on-context-tag") return;
-    await flushPending(ctx, { delivery: "runtime" });
+    await flushFromHook(ctx, "runtime");
   });
 
   // ── message_end: flush after the final assistant response in agent-message mode ──
@@ -519,7 +540,7 @@ export default function (pi: ExtensionAPI) {
     if (!currentConfig.value.enabled) return;
     if (currentConfig.value.pruneOn !== "agent-message") return;
     if (!isFinalAssistantMessage(event.message)) return;
-    await flushPending(ctx, { delivery: "session" });
+    await flushFromHook(ctx, "session");
   });
 
   // ── agent_end: last-chance cleanup only ─────────────────────────────────────

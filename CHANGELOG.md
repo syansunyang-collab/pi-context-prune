@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.1 — 2026-09-17
+
+### Fixed
+
+- Stop now works while the pruner is summarizing. Pi awaits the `turn_end`, `tool_execution_end` and `message_end` hooks, so a summarizer call made from a hook kept the run active and `abort()` waited for it. Hook-triggered flushes are now bound to the run's abort signal (`ctx.signal`); an aborted flush keeps its batches and the next trigger summarizes them.
+- Hook-triggered flushes give up after 180 s, so a stalled summarizer stream can no longer hold the session. The batches are kept and a warning is shown.
+- `npm publish` works from Windows (`check-package` and `build` scripts no longer depend on `npm` being spawnable without a shell or on `rm`).
+
 ## 1.5.0 — 2026-09-17
 
 First release of the fork (`@syansunyang/pi-context-prune`), based on upstream `pi-context-prune` 1.4.0 (championswimmer/pi-context-prune@626f270).

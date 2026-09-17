@@ -4508,6 +4508,20 @@ function index_default(pi) {
   };
   const assistantMessageHasToolCalls = (message) => message?.role === "assistant" && Array.isArray(message.content) && message.content.some((block) => block?.type === "toolCall");
   const isFinalAssistantMessage = (message) => message?.role === "assistant" && !assistantMessageHasToolCalls(message) && message.stopReason !== "error" && message.stopReason !== "aborted";
+  const HOOK_FLUSH_TIMEOUT_MS = 18e4;
+  const flushFromHook = async (ctx, delivery) => {
+    let runSignal;
+    try {
+      runSignal = ctx.signal;
+    } catch {
+    }
+    const deadline = AbortSignal.timeout(HOOK_FLUSH_TIMEOUT_MS);
+    const result = await flushPending(ctx, { delivery, signal: runSignal ? AbortSignal.any([runSignal, deadline]) : deadline });
+    if (!result.ok && result.reason === "aborted" && deadline.aborted && !runSignal?.aborted) {
+      safeNotify(ctx, `pruner: summarizer gave no result within ${HOOK_FLUSH_TIMEOUT_MS / 1e3}s; batches kept for the next trigger`, "warning");
+    }
+    return result;
+  };
   const trimBatchToPendingRange = (batch) => {
     const currentFrontier = frontier.get();
     let toolCalls = batch.toolCalls;
@@ -4768,7 +4782,7 @@ function index_default(pi) {
     if (!batch) return;
     pendingBatches.push(batch);
     if (currentConfig.value.pruneOn === "every-turn") {
-      await flushPending(ctx, { delivery: "session" });
+      await flushFromHook(ctx, "session");
     } else {
       const n = pendingBatches.length;
       let trigger;
@@ -4800,13 +4814,13 @@ function index_default(pi) {
     if (!CONTEXT_TAG_TOOL_NAMES.includes(event.toolName)) return;
     if (!currentConfig.value.enabled) return;
     if (currentConfig.value.pruneOn !== "on-context-tag") return;
-    await flushPending(ctx, { delivery: "runtime" });
+    await flushFromHook(ctx, "runtime");
   });
   pi.on("message_end", async (event, ctx) => {
     if (!currentConfig.value.enabled) return;
     if (currentConfig.value.pruneOn !== "agent-message") return;
     if (!isFinalAssistantMessage(event.message)) return;
-    await flushPending(ctx, { delivery: "session" });
+    await flushFromHook(ctx, "session");
   });
   pi.on("agent_end", async (_event, ctx) => {
     if (!currentConfig.value.enabled) return;
