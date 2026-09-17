@@ -7,7 +7,7 @@
 > - `summarizerMaxCharsPerResult` config key and `/pruner max-chars`;
 > - OpenCode session headers on the summarizer request.
 >
-> Package name `@syansunyang/pi-context-prune`, versions from 1.5.0; install line below. Benchmarks (offline replay + live A/B on SWE-bench Verified Django tasks) live in the `bench/` notes of the maintainer's control repo.
+> Published on npm as [`@syansunyang/pi-context-prune`](https://www.npmjs.com/package/@syansunyang/pi-context-prune) from 1.5.0. Benchmarks (offline replay + live A/B on SWE-bench Verified Django tasks) live in the `bench/` notes of the maintainer's control repo.
 
 A [Pi coding-agent](https://github.com/badlogic/pi-mono) extension that **summarizes completed tool-call batches**, prunes raw tool outputs from future LLM context, and exposes a `context_tree_query` escape hatch to recover any original output on demand.
 
@@ -28,22 +28,28 @@ The extension does append its own custom summary/index/frontier/stats entries to
 
 ## Installation
 
-Releases are git tags on this repository (`dist/` is committed, so no build step runs on install). See [CHANGELOG.md](CHANGELOG.md).
-
 ```bash
 # Install globally (all projects)
-pi install git:github.com/syansunyang-collab/pi-context-prune@v1.5.0
+pi install npm:@syansunyang/pi-context-prune
 
 # Or install for the current project only
-pi install -l git:github.com/syansunyang-collab/pi-context-prune@v1.5.0
+pi install -l npm:@syansunyang/pi-context-prune
 ```
 
-Once installed, the extension is auto-loaded every time you run `pi`. To move to a newer release, re-run the install command with the new tag.
+Once installed, the extension is auto-loaded every time you run `pi`. Re-run the install command to move to a newer release. See [CHANGELOG.md](CHANGELOG.md).
+
+### Install from GitHub
+
+Releases are also git tags on this repository (`dist/` is committed, so no build step runs on install):
+
+```bash
+pi install git:github.com/syansunyang-collab/pi-context-prune@v1.5.0
+```
 
 ### Try without installing
 
 ```bash
-pi -e git:github.com/syansunyang-collab/pi-context-prune@v1.5.0
+pi -e npm:@syansunyang/pi-context-prune
 ```
 
 ### From source (development)
@@ -59,7 +65,7 @@ pi -e .
 
 ```bash
 pi list           # show installed packages
-pi remove git:github.com/syansunyang-collab/pi-context-prune
+pi remove npm:@syansunyang/pi-context-prune
 ```
 
 ## Prune-On Modes
