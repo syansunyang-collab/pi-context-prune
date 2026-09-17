@@ -7,25 +7,10 @@
 > - `summarizerMaxCharsPerResult` config key and `/pruner max-chars`;
 > - OpenCode session headers on the summarizer request.
 >
-> Install with `pi install git:github.com/syansunyang-collab/pi-context-prune@local-prod-20260916`. Benchmarks (offline replay + live A/B on SWE-bench Verified Django tasks) live in the `bench/` notes of the maintainer's control repo.
-
-
-[![npm version](https://img.shields.io/npm/v/pi-context-prune?style=flat-square)](https://www.npmjs.com/package/pi-context-prune)
-[![npm downloads](https://img.shields.io/npm/dm/pi-context-prune?style=flat-square)](https://www.npmjs.com/package/pi-context-prune)
+> Package name `@syansunyang/pi-context-prune`; install line below. Benchmarks (offline replay + live A/B on SWE-bench Verified Django tasks) live in the `bench/` notes of the maintainer's control repo.
 
 A [Pi coding-agent](https://github.com/badlogic/pi-mono) extension that **summarizes completed tool-call batches**, prunes raw tool outputs from future LLM context, and exposes a `context_tree_query` escape hatch to recover any original output on demand.
 
-## Check out my other Pi extensions
-
-- [![pi-auto-theme](https://img.shields.io/badge/🎨_pi--auto--theme-blue?style=flat-square)](https://github.com/championswimmer/pi-auto-theme) — Auto-syncs Pi theme with OS dark/light mode.
-- [![pi-cache-graph](https://img.shields.io/badge/📊_pi--cache--graph-orange?style=flat-square)](https://github.com/championswimmer/pi-cache-graph) — Real-time prompt cache hit rates and token metrics.
-- [![pi-checklist](https://img.shields.io/badge/✅_pi--checklist-teal?style=flat-square)](https://github.com/championswimmer/pi-checklist) — Session task checklist with dependencies and a TUI renderer.
-- [![pi-context-prune](https://img.shields.io/badge/✂️_pi--context--prune-green?style=flat-square)](https://github.com/championswimmer/pi-context-prune) — Prunes verbose tool outputs from context while preserving history.
-- [![pi-context-usage](https://img.shields.io/badge/🪟_pi--context--usage-purple?style=flat-square)](https://github.com/championswimmer/pi-context-usage) — Dot-grid visualization of context window token usage.
-- [![pi-speedometer](https://img.shields.io/badge/⚡_pi--speedometer-yellow?style=flat-square)](https://github.com/championswimmer/pi-speedometer) — Live tokens/sec and TTFT in the status bar.
-- [![pi-subscription-meter](https://img.shields.io/badge/💳_pi--subscription--meter-red?style=flat-square)](https://github.com/championswimmer/pi-subscription-meter) — Tracks subscription quotas and rate limits across AI providers.
-
----
 
 ## Why
 
@@ -43,51 +28,30 @@ The extension does append its own custom summary/index/frontier/stats entries to
 
 ## Installation
 
-### Install from npm (stable releases)
-
-The package is published on [npmjs.org](https://www.npmjs.com/package/pi-context-prune). Use this for stable, versioned releases:
+This fork is installed from GitHub. `dist/` is committed on the `local-prod-20260916` branch, so no build step runs on install.
 
 ```bash
 # Install globally (all projects)
-pi install npm:pi-context-prune
+pi install git:github.com/syansunyang-collab/pi-context-prune@local-prod-20260916
 
 # Or install for the current project only
-pi install -l npm:pi-context-prune
+pi install -l git:github.com/syansunyang-collab/pi-context-prune@local-prod-20260916
 ```
 
-Once installed, the extension is auto-loaded every time you run `pi`. No flags needed.
-
-To **upgrade to a newer release**, simply re-run the install command — Pi will pull the latest version from npm.
-
-### Install from GitHub (cutting-edge / main branch)
-
-If you want the latest unreleased changes from `main`, install directly from the git repository:
-
-```bash
-# Install globally (all projects)
-pi install git:github.com/championswimmer/pi-context-prune
-
-# Or install for the current project only
-pi install -l git:github.com/championswimmer/pi-context-prune
-```
-
-> **Note:** The `main` branch may contain unreleased or experimental changes. Prefer the npm install for day-to-day use.
+Once installed, the extension is auto-loaded every time you run `pi`. `pi update` fetches the branch head.
 
 ### Try without installing
 
 ```bash
-# Load for this session only (no install)
-pi -e npm:pi-context-prune
-
-# Or try the latest from git without installing
-pi -e git:github.com/championswimmer/pi-context-prune
+pi -e git:github.com/syansunyang-collab/pi-context-prune@local-prod-20260916
 ```
 
 ### From source (development)
 
 ```bash
-git clone https://github.com/championswimmer/pi-context-prune
+git clone -b local-prod-20260916 https://github.com/syansunyang-collab/pi-context-prune
 cd pi-context-prune
+npm install && npm run build
 pi -e .
 ```
 
@@ -95,7 +59,7 @@ pi -e .
 
 ```bash
 pi list           # show installed packages
-pi remove pi-context-prune
+pi remove git:github.com/syansunyang-collab/pi-context-prune
 ```
 
 ## Prune-On Modes
