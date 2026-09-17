@@ -84,7 +84,14 @@ export default function (pi: ExtensionAPI) {
     Array.isArray(message.content) &&
     message.content.some((block: any) => block?.type === "toolCall");
 
-  const isFinalAssistantMessage = (message: any) => message?.role === "assistant" && !assistantMessageHasToolCalls(message);
+  // A turn that ended in a provider error or an abort is not a reply: Pi retries it (auto-retry) or the user does,
+  // and the retried request still needs the tool results of the current task. Pruning here replaced those results
+  // with "No result provided" placeholders and left the retry blind.
+  const isFinalAssistantMessage = (message: any) =>
+    message?.role === "assistant" &&
+    !assistantMessageHasToolCalls(message) &&
+    message.stopReason !== "error" &&
+    message.stopReason !== "aborted";
 
   const trimBatchToPendingRange = (batch: CapturedBatch): CapturedBatch | null => {
     const currentFrontier = frontier.get();
