@@ -8,7 +8,8 @@
   "files": [
     "dist/",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "rm -rf dist && esbuild index.ts --bundle --platform=node --target=node20 --format=esm --outfile=dist/index.js --sourcemap --external:@earendil-works/pi-ai --external:@earendil-works/pi-coding-agent --external:@earendil-works/pi-tui",
