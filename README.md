@@ -1,5 +1,15 @@
 # pi-context-prune
 
+> **Fork notice.** This is a maintained fork of [championswimmer/pi-context-prune](https://github.com/championswimmer/pi-context-prune) (MIT). Changes on top of upstream 1.4.0:
+> - pruned tool results are replaced by a short stub instead of being deleted, so no provider ever sees an unpaired tool call or a synthetic "No result provided" error;
+> - turns that ended in a provider error or an abort are not treated as the final reply (no pruning of the current task before a retry);
+> - the prune index is rebuilt on demand in the `context` hook (first request after a reload is pruned);
+> - `summarizerMaxCharsPerResult` config key and `/pruner max-chars`;
+> - OpenCode session headers on the summarizer request.
+>
+> Install with `pi install git:github.com/syansunyang-collab/pi-context-prune@local-prod-20260916`. Benchmarks (offline replay + live A/B on SWE-bench Verified Django tasks) live in the `bench/` notes of the maintainer's control repo.
+
+
 [![npm version](https://img.shields.io/npm/v/pi-context-prune?style=flat-square)](https://www.npmjs.com/package/pi-context-prune)
 [![npm downloads](https://img.shields.io/npm/dm/pi-context-prune?style=flat-square)](https://www.npmjs.com/package/pi-context-prune)
 
