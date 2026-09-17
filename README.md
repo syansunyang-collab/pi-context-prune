@@ -10,7 +10,7 @@ English | [简体中文](README.zh-CN.md)
 > - OpenCode session headers on the summarizer request;
 > - summarization started from a lifecycle hook is bound to the run's abort signal and to a deadline, so Stop works while a summary is in flight.
 >
-> Published on npm as [`@syansunyang/pi-context-prune`](https://www.npmjs.com/package/@syansunyang/pi-context-prune) from 1.5.0. Measured effect (live A/B on SWE-bench Verified Django tasks): see [README.zh-CN.md](README.zh-CN.md#实测数据) for the numbers.
+> Published on npm as [`@syansunyang/pi-context-prune`](https://www.npmjs.com/package/@syansunyang/pi-context-prune) from 1.5.0. Measured effect, method and per-run data: [`bench/`](bench/README.md).
 
 A [Pi coding-agent](https://github.com/badlogic/pi-mono) extension that **summarizes completed tool-call batches**, prunes raw tool outputs from future LLM context, and exposes a `context_tree_query` escape hatch to recover any original output on demand.
 

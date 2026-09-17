@@ -1,0 +1,121 @@
+[
+ {
+  "run": "r1-A",
+  "M1_ctx_tokens": 39161978,
+  "M2_uncached_input": 785530,
+  "M3_cache_read": 38376448,
+  "M3_cache_hit": 0.9799,
+  "M4_output": 99913,
+  "M4_reasoning": 59296,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 1.0445,
+  "M7_calls": 316,
+  "M7_peak_ctx": 244617,
+  "M7_first_ts": "2026-09-16T09:30:21.474Z",
+  "M7_last_ts": "2026-09-16T10:16:59.560Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 53,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 2,
+  "tools": {
+   "ls": 4,
+   "grep": 94,
+   "bash": 114,
+   "read": 110,
+   "edit": 61,
+   "find": 11,
+   "write": 1
+  },
+  "resolved": "1/0/1/1/1/0/1/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r1-B",
+  "M1_ctx_tokens": 14060021,
+  "M2_uncached_input": 668661,
+  "M3_cache_read": 13391360,
+  "M3_cache_hit": 0.9524,
+  "M4_output": 189389,
+  "M4_reasoning": 28964,
+  "M5_summarizer": {
+   "input": 119651,
+   "output": 43067,
+   "cost": 0.04378784999999999,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.6288,
+  "M7_calls": 255,
+  "M7_peak_ctx": 92456,
+  "M7_first_ts": "2026-09-16T09:30:21.501Z",
+  "M7_last_ts": "2026-09-16T10:50:48.985Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 50,
+  "M10_prune": {
+   "flushes": 16,
+   "summarized": 16,
+   "skipped": 0,
+   "raw_chars": 705091,
+   "summary_chars": 72770
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "grep": 91,
+   "ls": 3,
+   "read": 97,
+   "bash": 70,
+   "edit": 69,
+   "find": 11,
+   "write": 1
+  },
+  "resolved": "1/0/1/1/1/0/1/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r1-B8",
+  "M1_ctx_tokens": 14107271,
+  "M2_uncached_input": 648839,
+  "M3_cache_read": 13458432,
+  "M3_cache_hit": 0.954,
+  "M4_output": 184156,
+  "M4_reasoning": 29088,
+  "M5_summarizer": {
+   "input": 240095,
+   "output": 40961,
+   "cost": 0.06059085000000001,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.6199,
+  "M7_calls": 228,
+  "M7_peak_ctx": 104888,
+  "M7_first_ts": "2026-09-16T09:30:21.468Z",
+  "M7_last_ts": "2026-09-16T10:46:24.407Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 28,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 1508655,
+   "summary_chars": 70372
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "grep": 95,
+   "ls": 3,
+   "read": 74,
+   "bash": 88,
+   "edit": 36,
+   "find": 9
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/1/1/1/1/1/1/1"
+ }
+]

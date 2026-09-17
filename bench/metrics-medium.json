@@ -1,0 +1,1132 @@
+[
+ {
+  "run": "r1-A",
+  "M1_ctx_tokens": 26476546,
+  "M2_uncached_input": 608258,
+  "M3_cache_read": 25868288,
+  "M3_cache_hit": 0.977,
+  "M4_output": 41887,
+  "M4_reasoning": 14351,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.6893,
+  "M7_calls": 204,
+  "M7_peak_ctx": 243548,
+  "M7_first_ts": "2026-09-15T17:09:37.531Z",
+  "M7_last_ts": "2026-09-15T17:49:08.272Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 18,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 1,
+  "tools": {
+   "bash": 86,
+   "grep": 61,
+   "find": 12,
+   "read": 55,
+   "edit": 50
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/1/1/0/1/1/1/1"
+ },
+ {
+  "run": "r1-B",
+  "M1_ctx_tokens": 12182319,
+  "M2_uncached_input": 667439,
+  "M3_cache_read": 11514880,
+  "M3_cache_hit": 0.9452,
+  "M4_output": 43838,
+  "M4_reasoning": 13807,
+  "M5_summarizer": {
+   "input": 101071,
+   "output": 44406,
+   "cost": 0.04180425,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.4164,
+  "M7_calls": 236,
+  "M7_peak_ctx": 84863,
+  "M7_first_ts": "2026-09-15T17:09:37.496Z",
+  "M7_last_ts": "2026-09-15T18:26:48.694Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 30,
+  "M10_prune": {
+   "flushes": 15,
+   "summarized": 15,
+   "skipped": 0,
+   "raw_chars": 947292,
+   "summary_chars": 64392
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 82,
+   "grep": 59,
+   "read": 64,
+   "edit": 70,
+   "find": 4
+  },
+  "resolved": "1/0/1/1/1/0/0/1/0/1/0/1/1/1/1/1/1"
+ },
+ {
+  "run": "r1-B0",
+  "M1_ctx_tokens": 10281666,
+  "M2_uncached_input": 472258,
+  "M3_cache_read": 9809408,
+  "M3_cache_hit": 0.9541,
+  "M4_output": 38943,
+  "M4_reasoning": 10403,
+  "M5_summarizer": {
+   "input": 307770,
+   "output": 37554,
+   "cost": 0.0686979,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.3374,
+  "M7_calls": 216,
+  "M7_peak_ctx": 80049,
+  "M7_first_ts": "2026-09-15T19:13:27.193Z",
+  "M7_last_ts": "2026-09-15T19:39:54.035Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 20,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 1016917,
+   "summary_chars": 62027
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 78,
+   "grep": 57,
+   "find": 3,
+   "read": 51,
+   "edit": 53,
+   "write": 1
+  },
+  "resolved": "1/0/1/1/0/0/0/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r1-B8",
+  "M1_ctx_tokens": 8364051,
+  "M2_uncached_input": 382483,
+  "M3_cache_read": 7981568,
+  "M3_cache_hit": 0.9543,
+  "M4_output": 33833,
+  "M4_reasoning": 9781,
+  "M5_summarizer": {
+   "input": 132769,
+   "output": 36714,
+   "cost": 0.041943749999999995,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.2767,
+  "M7_calls": 202,
+  "M7_peak_ctx": 62428,
+  "M7_first_ts": "2026-09-15T19:13:24.177Z",
+  "M7_last_ts": "2026-09-15T19:36:44.781Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 17,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 725943,
+   "summary_chars": 57861
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 76,
+   "grep": 56,
+   "find": 9,
+   "read": 44,
+   "edit": 52
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/0/1/1/0/1/0/1"
+ },
+ {
+  "run": "r2-A",
+  "M1_ctx_tokens": 31017669,
+  "M2_uncached_input": 539333,
+  "M3_cache_read": 30478336,
+  "M3_cache_hit": 0.9826,
+  "M4_output": 48527,
+  "M4_reasoning": 20084,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.7757,
+  "M7_calls": 260,
+  "M7_peak_ctx": 243521,
+  "M7_first_ts": "2026-09-16T00:48:27.991Z",
+  "M7_last_ts": "2026-09-16T01:56:52.046Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 36,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 1,
+  "tools": {
+   "bash": 89,
+   "grep": 75,
+   "find": 13,
+   "read": 75,
+   "edit": 64
+  },
+  "resolved": "1/0/1/1/1/0/1/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r2-B",
+  "M1_ctx_tokens": 10538434,
+  "M2_uncached_input": 591810,
+  "M3_cache_read": 9946624,
+  "M3_cache_hit": 0.9438,
+  "M4_output": 38370,
+  "M4_reasoning": 12051,
+  "M5_summarizer": {
+   "input": 95698,
+   "output": 45545,
+   "cost": 0.0416817,
+   "calls": 18
+  },
+  "M6_cost_nominal": 0.3633,
+  "M7_calls": 214,
+  "M7_peak_ctx": 78584,
+  "M7_first_ts": "2026-09-16T00:48:28.013Z",
+  "M7_last_ts": "2026-09-16T02:03:04.264Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 24,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 1102410,
+   "summary_chars": 64991
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 89,
+   "grep": 52,
+   "find": 8,
+   "read": 52,
+   "edit": 62
+  },
+  "resolved": "1/0/1/1/1/0/0/1/0/1/0/1/1/0/1/0/1"
+ },
+ {
+  "run": "r2-B8",
+  "M1_ctx_tokens": 10040780,
+  "M2_uncached_input": 333260,
+  "M3_cache_read": 9707520,
+  "M3_cache_hit": 0.9668,
+  "M4_output": 43804,
+  "M4_reasoning": 13058,
+  "M5_summarizer": {
+   "input": 135665,
+   "output": 48733,
+   "cost": 0.049589549999999996,
+   "calls": 18
+  },
+  "M6_cost_nominal": 0.3134,
+  "M7_calls": 239,
+  "M7_peak_ctx": 67770,
+  "M7_first_ts": "2026-09-16T00:48:27.990Z",
+  "M7_last_ts": "2026-09-16T01:49:44.786Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 29,
+  "M10_prune": {
+   "flushes": 18,
+   "summarized": 18,
+   "skipped": 0,
+   "raw_chars": 373544,
+   "summary_chars": 68434
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 78,
+   "grep": 54,
+   "read": 67,
+   "edit": 64,
+   "find": 4
+  },
+  "resolved": "1/0/1/0/1/0/0/1/0/1/0/1/1/0/1/1/0"
+ },
+ {
+  "run": "r2-C",
+  "M1_ctx_tokens": 23602732,
+  "M2_uncached_input": 613932,
+  "M3_cache_read": 22988800,
+  "M3_cache_hit": 0.974,
+  "M4_output": 41659,
+  "M4_reasoning": 12948,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.6326,
+  "M7_calls": 259,
+  "M7_peak_ctx": 157036,
+  "M7_first_ts": "2026-09-16T00:53:44.175Z",
+  "M7_last_ts": "2026-09-16T02:03:34.240Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 31,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 80,
+   "grep": 71,
+   "read": 66,
+   "update_plan": 5,
+   "edit": 52,
+   "find": 14,
+   "ls": 1
+  },
+  "resolved": "1/0/1/1/1/0/0/1/0/1/0/1/1/1/1/1/1"
+ },
+ {
+  "run": "r2-D",
+  "M1_ctx_tokens": 13351188,
+  "M2_uncached_input": 876820,
+  "M3_cache_read": 12474368,
+  "M3_cache_hit": 0.9343,
+  "M4_output": 48495,
+  "M4_reasoning": 12043,
+  "M5_summarizer": {
+   "input": 188621,
+   "output": 42603,
+   "cost": 0.053882598000000004,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.483,
+  "M7_calls": 289,
+  "M7_peak_ctx": 79209,
+  "M7_first_ts": "2026-09-16T00:53:44.066Z",
+  "M7_last_ts": "2026-09-16T01:43:15.100Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 30,
+  "M10_prune": {
+   "flushes": 16,
+   "summarized": 16,
+   "skipped": 0,
+   "raw_chars": 878116,
+   "summary_chars": 78659
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "update_plan": 50,
+   "bash": 99,
+   "grep": 63,
+   "read": 63,
+   "edit": 63,
+   "find": 4,
+   "write": 1,
+   "ls": 2
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/0/1/1/1/1/1/1"
+ },
+ {
+  "run": "r3-A",
+  "M1_ctx_tokens": 25514812,
+  "M2_uncached_input": 551228,
+  "M3_cache_read": 24963584,
+  "M3_cache_hit": 0.9784,
+  "M4_output": 41630,
+  "M4_reasoning": 14241,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.6595,
+  "M7_calls": 229,
+  "M7_peak_ctx": 245384,
+  "M7_first_ts": "2026-09-16T02:44:51.545Z",
+  "M7_last_ts": "2026-09-16T03:12:39.704Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 19,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 1,
+  "tools": {
+   "bash": 91,
+   "grep": 69,
+   "find": 16,
+   "read": 57,
+   "edit": 61,
+   "write": 1,
+   "ls": 1
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r3-B",
+  "M1_ctx_tokens": 8919100,
+  "M2_uncached_input": 305212,
+  "M3_cache_read": 8613888,
+  "M3_cache_hit": 0.9658,
+  "M4_output": 34967,
+  "M4_reasoning": 10225,
+  "M5_summarizer": {
+   "input": 85151,
+   "output": 51902,
+   "cost": 0.04391385,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.2753,
+  "M7_calls": 239,
+  "M7_peak_ctx": 57309,
+  "M7_first_ts": "2026-09-16T02:44:53.194Z",
+  "M7_last_ts": "2026-09-16T03:14:47.486Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 31,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 352183,
+   "summary_chars": 65222
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 88,
+   "grep": 57,
+   "read": 70,
+   "edit": 57,
+   "find": 2
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/0/1/1/0/1/1/1"
+ },
+ {
+  "run": "r3-B8",
+  "M1_ctx_tokens": 10560237,
+  "M2_uncached_input": 472813,
+  "M3_cache_read": 10087424,
+  "M3_cache_hit": 0.9552,
+  "M4_output": 35742,
+  "M4_reasoning": 9412,
+  "M5_summarizer": {
+   "input": 144002,
+   "output": 48126,
+   "cost": 0.050475900000000004,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.3392,
+  "M7_calls": 265,
+  "M7_peak_ctx": 61479,
+  "M7_first_ts": "2026-09-16T02:44:54.309Z",
+  "M7_last_ts": "2026-09-16T03:27:02.926Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 37,
+  "M10_prune": {
+   "flushes": 16,
+   "summarized": 16,
+   "skipped": 0,
+   "raw_chars": 440040,
+   "summary_chars": 65243
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 77,
+   "grep": 85,
+   "find": 11,
+   "read": 78,
+   "edit": 58,
+   "write": 1
+  },
+  "resolved": "1/0/1/1/1/0/0/1/0/1/0/1/1/1/1/1/1"
+ },
+ {
+  "run": "r3-C",
+  "M1_ctx_tokens": 17226726,
+  "M2_uncached_input": 735206,
+  "M3_cache_read": 16491520,
+  "M3_cache_hit": 0.9573,
+  "M4_output": 46555,
+  "M4_reasoning": 12425,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.5327,
+  "M7_calls": 283,
+  "M7_peak_ctx": 120764,
+  "M7_first_ts": "2026-09-16T02:03:36.729Z",
+  "M7_last_ts": "2026-09-16T02:36:12.957Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 20,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 1,
+  "tools": {
+   "update_plan": 56,
+   "bash": 79,
+   "grep": 69,
+   "read": 58,
+   "find": 6,
+   "edit": 59
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/0/1/1/1/1/1/1"
+ },
+ {
+  "run": "r3-D",
+  "M1_ctx_tokens": 9193592,
+  "M2_uncached_input": 474232,
+  "M3_cache_read": 8719360,
+  "M3_cache_hit": 0.9484,
+  "M4_output": 37595,
+  "M4_reasoning": 10224,
+  "M5_summarizer": {
+   "input": 168062,
+   "output": 45190,
+   "cost": 0.052323299999999996,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.3143,
+  "M7_calls": 229,
+  "M7_peak_ctx": 72062,
+  "M7_first_ts": "2026-09-16T02:03:36.680Z",
+  "M7_last_ts": "2026-09-16T02:33:27.573Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 16,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 860394,
+   "summary_chars": 68342
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "update_plan": 21,
+   "bash": 80,
+   "grep": 61,
+   "read": 47,
+   "edit": 58,
+   "find": 6
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r4-A",
+  "M1_ctx_tokens": 27267596,
+  "M2_uncached_input": 515084,
+  "M3_cache_read": 26752512,
+  "M3_cache_hit": 0.9811,
+  "M4_output": 43184,
+  "M4_reasoning": 15602,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.6899,
+  "M7_calls": 244,
+  "M7_peak_ctx": 243755,
+  "M7_first_ts": "2026-09-16T03:27:06.940Z",
+  "M7_last_ts": "2026-09-16T03:55:17.181Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 26,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 1,
+  "tools": {
+   "bash": 89,
+   "grep": 61,
+   "read": 62,
+   "edit": 66,
+   "find": 4,
+   "ls": 3
+  },
+  "resolved": "1/0/1/1/1/0/1/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r4-B",
+  "M1_ctx_tokens": 7620611,
+  "M2_uncached_input": 405507,
+  "M3_cache_read": 7215104,
+  "M3_cache_hit": 0.9468,
+  "M4_output": 31349,
+  "M4_reasoning": 8638,
+  "M5_summarizer": {
+   "input": 74134,
+   "output": 29971,
+   "cost": 0.0291027,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.263,
+  "M7_calls": 181,
+  "M7_peak_ctx": 65304,
+  "M7_first_ts": "2026-09-16T03:27:07.431Z",
+  "M7_last_ts": "2026-09-16T03:57:42.865Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 10,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 874527,
+   "summary_chars": 53951
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 75,
+   "grep": 53,
+   "read": 37,
+   "find": 9,
+   "edit": 54
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/1/1/1/0/1/1/0"
+ },
+ {
+  "run": "r4-B8",
+  "M1_ctx_tokens": 9599009,
+  "M2_uncached_input": 708129,
+  "M3_cache_read": 8890880,
+  "M3_cache_hit": 0.9262,
+  "M4_output": 165041,
+  "M4_reasoning": 12024,
+  "M5_summarizer": {
+   "input": 168687,
+   "output": 41483,
+   "cost": 0.05019284999999999,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.5175,
+  "M7_calls": 197,
+  "M7_peak_ctx": 116926,
+  "M7_first_ts": "2026-09-16T03:27:07.261Z",
+  "M7_last_ts": "2026-09-16T05:13:09.172Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 13,
+  "M10_prune": {
+   "flushes": 16,
+   "summarized": 16,
+   "skipped": 0,
+   "raw_chars": 988825,
+   "summary_chars": 62621
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "bash": 82,
+   "read": 46,
+   "grep": 56,
+   "find": 8,
+   "edit": 55,
+   "write": 1
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r4-C",
+  "M1_ctx_tokens": 25065018,
+  "M2_uncached_input": 1009210,
+  "M3_cache_read": 24055808,
+  "M3_cache_hit": 0.9597,
+  "M4_output": 190509,
+  "M4_reasoning": 20335,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.9116,
+  "M7_calls": 347,
+  "M7_peak_ctx": 145020,
+  "M7_first_ts": "2026-09-16T03:27:08.641Z",
+  "M7_last_ts": "2026-09-16T04:44:31.837Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 33,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 2,
+  "tools": {
+   "update_plan": 54,
+   "bash": 115,
+   "grep": 91,
+   "find": 31,
+   "read": 72,
+   "edit": 68
+  },
+  "resolved": "1/0/1/1/1/0/1/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r4-D",
+  "M1_ctx_tokens": 11840953,
+  "M2_uncached_input": 618937,
+  "M3_cache_read": 11222016,
+  "M3_cache_hit": 0.9477,
+  "M4_output": 45190,
+  "M4_reasoning": 12622,
+  "M5_summarizer": {
+   "input": 186096,
+   "output": 48736,
+   "cost": 0.05715599999999999,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.4025,
+  "M7_calls": 261,
+  "M7_peak_ctx": 76784,
+  "M7_first_ts": "2026-09-16T03:27:10.229Z",
+  "M7_last_ts": "2026-09-16T04:12:58.366Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 23,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 1132878,
+   "summary_chars": 79466
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "update_plan": 39,
+   "bash": 108,
+   "grep": 67,
+   "find": 14,
+   "read": 57,
+   "edit": 47
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/0/1/1/0/1/1/1"
+ },
+ {
+  "run": "r5-A",
+  "M1_ctx_tokens": 23375528,
+  "M2_uncached_input": 479912,
+  "M3_cache_read": 22895616,
+  "M3_cache_hit": 0.9795,
+  "M4_output": 37246,
+  "M4_reasoning": 12349,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.5986,
+  "M7_calls": 246,
+  "M7_peak_ctx": 168534,
+  "M7_first_ts": "2026-09-16T07:28:38.120Z",
+  "M7_last_ts": "2026-09-16T07:58:39.648Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 41,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "grep": 72,
+   "find": 7,
+   "read": 81,
+   "edit": 52,
+   "bash": 66
+  },
+  "resolved": "1/0/1/0/1/0/0/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r5-B",
+  "M1_ctx_tokens": 6821524,
+  "M2_uncached_input": 454292,
+  "M3_cache_read": 6367232,
+  "M3_cache_hit": 0.9334,
+  "M4_output": 155430,
+  "M4_reasoning": 7338,
+  "M5_summarizer": {
+   "input": 80550,
+   "output": 38841,
+   "cost": 0.0353871,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.4047,
+  "M7_calls": 190,
+  "M7_peak_ctx": 164793,
+  "M7_first_ts": "2026-09-16T07:28:38.276Z",
+  "M7_last_ts": "2026-09-16T08:30:56.270Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 41,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 377707,
+   "summary_chars": 58037
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "grep": 64,
+   "ls": 2,
+   "read": 74,
+   "bash": 42,
+   "edit": 49,
+   "find": 8
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/0/1/1/0/1/1/1"
+ },
+ {
+  "run": "r5-B8",
+  "M1_ctx_tokens": 9488382,
+  "M2_uncached_input": 462846,
+  "M3_cache_read": 9025536,
+  "M3_cache_hit": 0.9512,
+  "M4_output": 35547,
+  "M4_reasoning": 11027,
+  "M5_summarizer": {
+   "input": 158139,
+   "output": 39210,
+   "cost": 0.04724685,
+   "calls": 17
+  },
+  "M6_cost_nominal": 0.3157,
+  "M7_calls": 205,
+  "M7_peak_ctx": 80218,
+  "M7_first_ts": "2026-09-16T07:28:38.106Z",
+  "M7_last_ts": "2026-09-16T07:55:38.216Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 21,
+  "M10_prune": {
+   "flushes": 17,
+   "summarized": 17,
+   "skipped": 0,
+   "raw_chars": 1090415,
+   "summary_chars": 63802
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "grep": 61,
+   "bash": 76,
+   "find": 7,
+   "read": 52,
+   "edit": 50,
+   "write": 1,
+   "ls": 1
+  },
+  "resolved": "1/0/1/1/1/0/0/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r5-C",
+  "M1_ctx_tokens": 20453891,
+  "M2_uncached_input": 470531,
+  "M3_cache_read": 19983360,
+  "M3_cache_hit": 0.977,
+  "M4_output": 49298,
+  "M4_reasoning": 14726,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.5529,
+  "M7_calls": 290,
+  "M7_peak_ctx": 133121,
+  "M7_first_ts": "2026-09-16T07:28:38.344Z",
+  "M7_last_ts": "2026-09-16T08:00:24.457Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 33,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 1,
+  "tools": {
+   "update_plan": 53,
+   "grep": 75,
+   "find": 11,
+   "read": 76,
+   "bash": 79,
+   "edit": 56,
+   "write": 1
+  },
+  "resolved": "1/0/1/0/1/0/0/1/0/1/0/1/1/0/1/1/1"
+ },
+ {
+  "run": "r5-D",
+  "M1_ctx_tokens": 14829287,
+  "M2_uncached_input": 740583,
+  "M3_cache_read": 14088704,
+  "M3_cache_hit": 0.9501,
+  "M4_output": 183347,
+  "M4_reasoning": 15604,
+  "M5_summarizer": {
+   "input": 217438,
+   "output": 61900,
+   "cost": 0.0697557,
+   "calls": 18
+  },
+  "M6_cost_nominal": 0.6499,
+  "M7_calls": 303,
+  "M7_peak_ctx": 92296,
+  "M7_first_ts": "2026-09-16T07:28:38.372Z",
+  "M7_last_ts": "2026-09-16T08:49:03.296Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 28,
+  "M10_prune": {
+   "flushes": 18,
+   "summarized": 18,
+   "skipped": 0,
+   "raw_chars": 770943,
+   "summary_chars": 94790
+  },
+  "M10_compactions": 1,
+  "tools": {
+   "update_plan": 53,
+   "grep": 94,
+   "bash": 128,
+   "read": 57,
+   "edit": 73,
+   "find": 11
+  },
+  "resolved": "1/0/1/1/1/0/0/1/0/1/1/1/0/1/1/1/1"
+ },
+ {
+  "run": "r6-A",
+  "M1_ctx_tokens": 22438427,
+  "M2_uncached_input": 653851,
+  "M3_cache_read": 21784576,
+  "M3_cache_hit": 0.9709,
+  "M4_output": 34542,
+  "M4_reasoning": 11667,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.6079,
+  "M7_calls": 182,
+  "M7_peak_ctx": 244518,
+  "M7_first_ts": "2026-09-16T08:49:11.694Z",
+  "M7_last_ts": "2026-09-16T09:15:43.608Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 18,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 2,
+  "tools": {
+   "grep": 70,
+   "ls": 2,
+   "read": 55,
+   "bash": 73,
+   "edit": 42,
+   "find": 14,
+   "write": 1
+  },
+  "resolved": "1/0/1/0/1/0/1/1/0/1/0/1/1/1/1/0/1"
+ },
+ {
+  "run": "r6-B",
+  "M1_ctx_tokens": 10041629,
+  "M2_uncached_input": 660765,
+  "M3_cache_read": 9380864,
+  "M3_cache_hit": 0.9342,
+  "M4_output": 34451,
+  "M4_reasoning": 9646,
+  "M5_summarizer": {
+   "input": 88006,
+   "output": 27987,
+   "cost": 0.029993099999999995,
+   "calls": 19
+  },
+  "M6_cost_nominal": 0.3611,
+  "M7_calls": 218,
+  "M7_peak_ctx": 83378,
+  "M7_first_ts": "2026-09-16T08:49:11.891Z",
+  "M7_last_ts": "2026-09-16T09:19:29.879Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 25,
+  "M10_prune": {
+   "flushes": 19,
+   "summarized": 19,
+   "skipped": 0,
+   "raw_chars": 1231552,
+   "summary_chars": 61709
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "grep": 60,
+   "bash": 77,
+   "find": 6,
+   "read": 61,
+   "edit": 57
+  },
+  "resolved": "1/0/1/1/1/0/0/1/0/1/1/1/1/1/1/1/1"
+ },
+ {
+  "run": "r6-B8",
+  "M1_ctx_tokens": 7301459,
+  "M2_uncached_input": 436051,
+  "M3_cache_read": 6865408,
+  "M3_cache_hit": 0.9403,
+  "M4_output": 34225,
+  "M4_reasoning": 10756,
+  "M5_summarizer": {
+   "input": 142906,
+   "output": 28923,
+   "cost": 0.038789699999999996,
+   "calls": 18
+  },
+  "M6_cost_nominal": 0.2656,
+  "M7_calls": 201,
+  "M7_peak_ctx": 53790,
+  "M7_first_ts": "2026-09-16T08:49:11.891Z",
+  "M7_last_ts": "2026-09-16T09:20:25.495Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 29,
+  "M10_prune": {
+   "flushes": 18,
+   "summarized": 18,
+   "skipped": 0,
+   "raw_chars": 455532,
+   "summary_chars": 64708
+  },
+  "M10_compactions": 0,
+  "tools": {
+   "grep": 65,
+   "read": 68,
+   "bash": 54,
+   "edit": 53,
+   "find": 10,
+   "write": 1
+  },
+  "resolved": "1/0/1/1/1/0/1/1/0/1/1/1/1/0/1/1/1"
+ },
+ {
+  "run": "r6-C",
+  "M1_ctx_tokens": 24295671,
+  "M2_uncached_input": 831223,
+  "M3_cache_read": 23464448,
+  "M3_cache_hit": 0.9658,
+  "M4_output": 49651,
+  "M4_reasoning": 14715,
+  "M5_summarizer": {
+   "input": 0,
+   "output": 0,
+   "cost": 0,
+   "calls": 0
+  },
+  "M6_cost_nominal": 0.6951,
+  "M7_calls": 278,
+  "M7_peak_ctx": 168559,
+  "M7_first_ts": "2026-09-16T08:49:11.677Z",
+  "M7_last_ts": "2026-09-16T09:25:40.217Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 27,
+  "M10_prune": {
+   "flushes": 0,
+   "summarized": 0,
+   "skipped": 0,
+   "raw_chars": 0,
+   "summary_chars": 0
+  },
+  "M10_compactions": 1,
+  "tools": {
+   "update_plan": 57,
+   "grep": 77,
+   "find": 6,
+   "read": 62,
+   "bash": 98,
+   "edit": 50,
+   "ls": 2
+  },
+  "resolved": "1/0/1/1/1/1/1/1/0/1/0/1/1/1/1/0/1"
+ },
+ {
+  "run": "r6-D",
+  "M1_ctx_tokens": 10888253,
+  "M2_uncached_input": 691773,
+  "M3_cache_read": 10196480,
+  "M3_cache_hit": 0.9365,
+  "M4_output": 48231,
+  "M4_reasoning": 15303,
+  "M5_summarizer": {
+   "input": 182014,
+   "output": 41914,
+   "cost": 0.05247776400000001,
+   "calls": 18
+  },
+  "M6_cost_nominal": 0.4002,
+  "M7_calls": 275,
+  "M7_peak_ctx": 72254,
+  "M7_first_ts": "2026-09-16T08:49:11.966Z",
+  "M7_last_ts": "2026-09-16T09:27:34.195Z",
+  "M9_context_tree_query": 0,
+  "M9_repeat_reads": 22,
+  "M10_prune": {
+   "flushes": 18,
+   "summarized": 18,
+   "skipped": 0,
+   "raw_chars": 1105435,
+   "summary_chars": 74201
+  },
+  "M10_compactions": 1,
+  "tools": {
+   "update_plan": 51,
+   "grep": 70,
+   "find": 8,
+   "bash": 86,
+   "read": 55,
+   "edit": 56,
+   "write": 1
+  },
+  "resolved": "1/0/1/0/1/0/0/1/0/1/1/1/1/0/1/1/1"
+ }
+]
