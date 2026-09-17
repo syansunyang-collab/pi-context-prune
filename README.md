@@ -1,3 +1,5 @@
+English | [简体中文](README.zh-CN.md)
+
 # pi-context-prune
 
 > **Fork notice.** This is a maintained fork of [championswimmer/pi-context-prune](https://github.com/championswimmer/pi-context-prune) (MIT). Changes on top of upstream 1.4.0:
@@ -5,9 +7,10 @@
 > - turns that ended in a provider error or an abort are not treated as the final reply (no pruning of the current task before a retry);
 > - the prune index is rebuilt on demand in the `context` hook (first request after a reload is pruned);
 > - `summarizerMaxCharsPerResult` config key and `/pruner max-chars`;
-> - OpenCode session headers on the summarizer request.
+> - OpenCode session headers on the summarizer request;
+> - summarization started from a lifecycle hook is bound to the run's abort signal and to a deadline, so Stop works while a summary is in flight.
 >
-> Published on npm as [`@syansunyang/pi-context-prune`](https://www.npmjs.com/package/@syansunyang/pi-context-prune) from 1.5.0. Benchmarks (offline replay + live A/B on SWE-bench Verified Django tasks) live in the `bench/` notes of the maintainer's control repo.
+> Published on npm as [`@syansunyang/pi-context-prune`](https://www.npmjs.com/package/@syansunyang/pi-context-prune) from 1.5.0. Measured effect (live A/B on SWE-bench Verified Django tasks): see [README.zh-CN.md](README.zh-CN.md#实测数据) for the numbers.
 
 A [Pi coding-agent](https://github.com/badlogic/pi-mono) extension that **summarizes completed tool-call batches**, prunes raw tool outputs from future LLM context, and exposes a `context_tree_query` escape hatch to recover any original output on demand.
 
