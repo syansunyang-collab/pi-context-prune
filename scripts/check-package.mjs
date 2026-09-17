@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { execFileSync } from "node:child_process";
+import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
@@ -9,11 +9,11 @@ const packageJson = JSON.parse(
 );
 
 // Guard the published tarball contract so releases cannot regress to raw TypeScript.
-const packOutput = execFileSync(
-  "npm",
-  ["pack", "--dry-run", "--json", "--ignore-scripts"],
-  { cwd: packageRoot, encoding: "utf8" },
-);
+// execSync goes through a shell, so this also works on Windows where npm is npm.cmd.
+const packOutput = execSync("npm pack --dry-run --json --ignore-scripts", {
+  cwd: packageRoot,
+  encoding: "utf8",
+});
 const packResults = JSON.parse(packOutput);
 
 assert.deepEqual(packageJson.pi?.extensions, ["./dist/index.js"]);
