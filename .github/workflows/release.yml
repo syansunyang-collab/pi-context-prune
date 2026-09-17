@@ -23,7 +23,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "24"
-          registry-url: "https://registry.npmjs.org"
           package-manager-cache: false
 
       - name: Verify tag matches package.json version
@@ -47,4 +46,9 @@ jobs:
       # attaches provenance by itself. Passing --provenance or an explicit --access makes it take
       # the token path instead, which has no token here and fails with a 404 on PUT.
       - name: Publish to npm with trusted publishing
-        run: npm publish
+        # registry-url is deliberately not set on setup-node: it writes an .npmrc with
+        # _authToken=${NODE_AUTH_TOKEN}, and that placeholder credential makes npm publish as an
+        # anonymous user (404 on PUT) instead of exchanging the GitHub OIDC token.
+        run: |
+          npm -v
+          npm publish
