@@ -2,6 +2,10 @@ English | [简体中文](README.zh-CN.md)
 
 # pi-context-prune
 
+**−63% context tokens, measured over six A/B rounds on SWE-bench Verified, with every original tool output still one query away.**
+
+Written because a long agent session can spend more on re-reading its own tool output than on thinking.
+
 > **Fork notice.** This is a maintained fork of [championswimmer/pi-context-prune](https://github.com/championswimmer/pi-context-prune) (MIT). Changes on top of upstream 1.4.0:
 > - pruned tool results are replaced by a short stub instead of being deleted, so no provider ever sees an unpaired tool call or a synthetic "No result provided" error;
 > - turns that ended in a provider error or an abort are not treated as the final reply (no pruning of the current task before a retry);

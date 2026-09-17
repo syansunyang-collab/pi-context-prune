@@ -2,6 +2,10 @@
 
 # pi-context-prune
 
+**上下文 token −63%，六轮 A/B 实测，被裁掉的原文随时一句话取回。**
+
+写这个是因为：长会话里模型花在反复重读自己工具输出上的钱，比花在思考上的还多。
+
 > **来历。** 本项目是 [championswimmer/pi-context-prune](https://github.com/championswimmer/pi-context-prune)（MIT）的自维护分支，基于上游 1.4.0。上游的架构、命令与工具设计均来自原作者，本分支在其上修复了若干在弱模型、错误重试与用户停止场景下会失效的行为，并按自己的版本号发布。
 >
 > npm 包名 [`@syansunyang/pi-context-prune`](https://www.npmjs.com/package/@syansunyang/pi-context-prune)，从 1.5.0 起。未加作用域的 `pi-context-prune` 仍属上游。
