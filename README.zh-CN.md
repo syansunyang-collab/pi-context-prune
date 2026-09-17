@@ -99,7 +99,8 @@ pi install git:github.com/syansunyang-collab/pi-context-prune@v1.5.1
 | 1.5.1 | 钩子里的摘要调用绑定本轮停止信号，并加 180 秒截止 | Pi 的停止要等会话空闲，而摘要在钩子里被 await，摘要期间点停止无效 |
 | 1.5.1 | 构建与打包检查脚本可在 Windows 下运行 | `rm -rf` 与直接 spawn `npm` 使 `npm publish` 在 Windows 上失败 |
 
-完整记录见 [CHANGELOG.md](CHANGELOG.md)。
+完整记录见 [CHANGELOG.md](CHANGELOG.md)。英文 README 末尾的 Follow-up ideas 一节是上游的路线图，不是本分支的计划。
+`PRUNING.md` 与 `.agents/` 下的开发笔记均出自上游，本分支原样保留。
 
 ## 实测数据
 
@@ -120,6 +121,7 @@ token 降幅每一轮都在 53% 到 72% 之间，不裁剪的一组每轮都撞�
 ## 已知限制
 
 - 摘要模型的调用本身要花钱，`/pruner stats` 会累计。省下的窗口与这部分开销需要自己权衡。
+- 摘要的延迟发生在触发边界上。1.5.1 起，钩子里发起的摘要绑定本轮停止信号并在 180 秒后放弃，因此不会挡住停止，放弃的批次留到下次触发。
 - 每次裁剪都会让服务端前缀缓存失效一次。
 - 配置路径按用户主目录写死，同一台机器上多个 agent 目录共用一份配置。
 - 摘要质量取决于所选模型，太小的模型会丢掉关键标识符。

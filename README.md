@@ -357,12 +357,14 @@ The extension registers a status widget in the Pi footer that shows the current 
 
 - The `context_tree_query` tool is only active when the extension is loaded.
 - The `context_prune` tool is only activated in `agentic-auto` mode.
-- Summarizer latency is paid at the configured flush boundary (`turn_end`, `message_end`, `context_checkpoint`, `/pruner now`, or `context_prune`). More aggressive modes make that cost visible more often.
+- Summarizer latency is paid at the configured flush boundary (`turn_end`, `message_end`, `context_checkpoint`, `/pruner now`, or `context_prune`). More aggressive modes make that cost visible more often. Since 1.5.1 a flush started from a lifecycle hook is bound to the run's abort signal and gives up after 180 s, so Stop is never blocked by it and the batches are kept for the next trigger.
 - Mid-turn pruning now supports completed subsets of a longer tool chain, but batching is still based on assistant-message groups rather than arbitrary semantic task labels.
 - The `/pruner tree` browser shows pruned tool calls grouped under their summaries. Press `Ctrl-O` on a summary node to open the full pruned summary message in a bordered overlay. It still does not recover full original tool outputs inline (use `context_tree_query` for that).
 - Summary grouping across multiple turns (e.g., "compress the last 5 summaries") is a follow-up item.
 
-## Follow-up ideas
+## Follow-up ideas (upstream)
+
+This list is the upstream project's roadmap, kept here for reference. It is not this fork's plan and none of it is committed work here.
 
 - Auto-summarize older unsummarized turns on `/pruner on`
 - Batch multiple turn summaries into a single meta-summary at compaction time

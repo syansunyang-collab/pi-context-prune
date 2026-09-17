@@ -2,6 +2,8 @@
 
 > How `pi-context-prune` compresses tool-call history, why it matters for long-running sessions, and how it balances context size against provider-side prefix caching.
 
+> **Authorship.** This document was written by the upstream project [championswimmer/pi-context-prune](https://github.com/championswimmer/pi-context-prune) and is kept here unchanged. For what this fork changed, see the fork notice in [README.md](README.md) and [CHANGELOG.md](CHANGELOG.md).
+
 ---
 
 ## Table of Contents
