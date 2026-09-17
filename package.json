@@ -1,7 +1,7 @@
 {
   "name": "@syansunyang/pi-context-prune",
-  "version": "1.5.1",
-  "description": "Pi extension package for pruning future context while preserving original tool-call history.",
+  "version": "1.5.2",
+  "description": "Pi coding-agent extension that summarizes finished tool-call output out of context and keeps the originals one query away. Fork of championswimmer/pi-context-prune 1.4.0, with fixes for pruned-result handling, errored turns, reload and abort.",
   "type": "module",
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
@@ -18,7 +18,11 @@
     "prepack": "npm run build && npm run check:package"
   },
   "keywords": [
-    "pi-package"
+    "pi-package",
+    "context-pruning",
+    "coding-agent",
+    "llm",
+    "context-window"
   ],
   "repository": {
     "type": "git",

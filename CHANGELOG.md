@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.5.2 - 2026-09-17
+
+Documentation and packaging only; no behaviour change.
+
+### Changed
+
+- `description` now matches the repository's: what the extension does, and that it is a fork of upstream 1.4.0.
+- README: a Chinese translation ([README.zh-CN.md](README.zh-CN.md)) and a language switcher; the fork notice covers the 1.5.1 abort fix.
+- Sections written by the upstream project are labelled as such: "Follow-up ideas" is upstream's roadmap, not this fork's plan, and PRUNING.md carries an authorship note.
+- The limitation about summarizer latency now states the 1.5.1 abort binding and the 180 s deadline.
+
+### Added
+
+- [`bench/`](bench/README.md): method, per-run metrics for 29 runs at thinking medium plus three at high, the A/B harness and the isolation scanner. The measured quality cost is stated, not just the token saving.
+
 ## 1.5.1 — 2026-09-17
 
 ### Fixed
