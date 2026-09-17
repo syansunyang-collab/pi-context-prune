@@ -530,7 +530,7 @@ export default function (pi: ExtensionAPI) {
 
     if (!indexEmpty) {
       const pruned = pruneMessages(messages, indexer);
-      if (pruned.length !== messages.length) {
+      if (pruned !== messages) {
         messages = pruned;
         changed = true;
       }
