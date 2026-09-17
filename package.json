@@ -1,6 +1,6 @@
 {
   "name": "@syansunyang/pi-context-prune",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Pi extension package for pruning future context while preserving original tool-call history.",
   "type": "module",
   "main": "./dist/index.js",
@@ -39,5 +39,8 @@
     "@earendil-works/pi-tui": "^0.84.1",
     "@sinclair/typebox": "^0.34.52",
     "esbuild": "^0.27.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

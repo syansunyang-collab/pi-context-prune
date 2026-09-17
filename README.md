@@ -7,7 +7,7 @@
 > - `summarizerMaxCharsPerResult` config key and `/pruner max-chars`;
 > - OpenCode session headers on the summarizer request.
 >
-> Package name `@syansunyang/pi-context-prune`; install line below. Benchmarks (offline replay + live A/B on SWE-bench Verified Django tasks) live in the `bench/` notes of the maintainer's control repo.
+> Package name `@syansunyang/pi-context-prune`, versions from 1.5.0; install line below. Benchmarks (offline replay + live A/B on SWE-bench Verified Django tasks) live in the `bench/` notes of the maintainer's control repo.
 
 A [Pi coding-agent](https://github.com/badlogic/pi-mono) extension that **summarizes completed tool-call batches**, prunes raw tool outputs from future LLM context, and exposes a `context_tree_query` escape hatch to recover any original output on demand.
 
@@ -28,22 +28,22 @@ The extension does append its own custom summary/index/frontier/stats entries to
 
 ## Installation
 
-This fork is installed from GitHub. `dist/` is committed on the `local-prod-20260916` branch, so no build step runs on install.
+Releases are git tags on this repository (`dist/` is committed, so no build step runs on install). See [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
 # Install globally (all projects)
-pi install git:github.com/syansunyang-collab/pi-context-prune@local-prod-20260916
+pi install git:github.com/syansunyang-collab/pi-context-prune@v1.5.0
 
 # Or install for the current project only
-pi install -l git:github.com/syansunyang-collab/pi-context-prune@local-prod-20260916
+pi install -l git:github.com/syansunyang-collab/pi-context-prune@v1.5.0
 ```
 
-Once installed, the extension is auto-loaded every time you run `pi`. `pi update` fetches the branch head.
+Once installed, the extension is auto-loaded every time you run `pi`. To move to a newer release, re-run the install command with the new tag.
 
 ### Try without installing
 
 ```bash
-pi -e git:github.com/syansunyang-collab/pi-context-prune@local-prod-20260916
+pi -e git:github.com/syansunyang-collab/pi-context-prune@v1.5.0
 ```
 
 ### From source (development)
