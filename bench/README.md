@@ -33,7 +33,7 @@ Token counts include everything the pruner itself spends: the summarizer's input
 
 ## Results, thinking medium
 
-| Arm | Rounds | Context tokens, median | vs A | Resolved /17, mean | Peak context, median | Native compactions |
+| Arm | Rounds | Context tokens, median | vs A | Resolved /17, mean | Peak context, median | Compactions |
 |---|---|---|---|---|---|---|
 | A | 6 | 26.0M | — | 12.7 | 244k | 6 |
 | B | 6 | 9.6M | −63% | 11.3 | 81k | 0 |
@@ -42,7 +42,7 @@ Token counts include everything the pruner itself spends: the summarizer's input
 | C | 5 | 23.6M | −9% | 12.2 | 145k | 5 |
 | D | 5 | 12.1M | −54% | 11.8 | 77k | 2 |
 
-The token saving held in every single round, never below 53% and never above 72%. The unpruned arm hit Pi's native compaction threshold in all six rounds; the pruned arms never did, which matters because native compaction rewrites history and cannot be undone, while pruning keeps every original output retrievable.
+The token saving held in every single round, never below 53% and never above 72%. The unpruned arm was compacted in five of its six rounds, six compactions in total; the pruned arms with the pruner alone never were. Compaction here is Pi's own compaction operation, triggered by the `pi-midrun-compact` extension at 90% of the model's context window (Pi's built-in threshold trigger was off in this setup). That matters because compaction rewrites history and cannot be undone, while pruning keeps every original output retrievable.
 
 ## The quality cost, stated plainly
 
