@@ -33,7 +33,7 @@ pi install -l npm:@syansunyang/pi-context-prune
 也可以从 GitHub 按标签安装（`dist/` 已入库，安装时不执行构建）：
 
 ```bash
-pi install git:github.com/syansunyang-collab/pi-context-prune@v1.5.1
+pi install git:github.com/syansunyang-collab/pi-context-prune@v1.5.3
 ```
 
 ## 快速开始
@@ -102,6 +102,8 @@ pi install git:github.com/syansunyang-collab/pi-context-prune@v1.5.1
 | 1.5.0 | 新增 `summarizerMaxCharsPerResult` 与 `/pruner max-chars`；摘要请求带 OpenCode 会话头 | 上游固定 2000 字符上限，长结果被截断后摘要质量下降 |
 | 1.5.1 | 钩子里的摘要调用绑定本轮停止信号，并加 180 秒截止 | Pi 的停止要等会话空闲，而摘要在钩子里被 await，摘要期间点停止无效 |
 | 1.5.1 | 构建与打包检查脚本可在 Windows 下运行 | `rm -rf` 与直接 spawn `npm` 使 `npm publish` 在 Windows 上失败 |
+| 1.5.3 | `context` 钩子把会话里有、当前消息列表里缺的摘要补进请求，放在它覆盖的工具结果之后 | `agent-message` 与 `every-turn` 的摘要只写进会话文件，Pi 只在重载时读回；此前同一会话里模型只看到指向摘要的桩，看不到摘要本身 |
+| 1.5.3 | `turn_end` 按整条分支的 assistant 消息编号 | Pi 的 `event.turnIndex` 每条提示词从 0 计数，frontier 按整条分支计数；从第二条提示词起，前几个工具轮被当成已处理：`every-turn` 不裁，`agent-message` 不入队 |
 
 完整记录见 [CHANGELOG.md](CHANGELOG.md)。英文 README 末尾的 Follow-up ideas 一节是上游的路线图，不是本分支的计划。
 `PRUNING.md` 与 `.agents/` 下的开发笔记均出自上游，本分支原样保留。

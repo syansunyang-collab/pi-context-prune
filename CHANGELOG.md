@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.5.3 - 2026-09-19
+
+Both fixes concern behaviour inherited from upstream 1.4.0.
+
+### Fixed
+
+- Summaries now reach the model within the same session. `agent-message` and `every-turn` flushes store the summary with `sessionManager.appendCustomMessageEntry`, which writes the session file but not the running agent's message list; Pi reads the file back only on reload. Until then every later request carried stubs pointing at a summary the model never received. The `context` hook now adds any summary the list lacks, right after the tool results it covers (where a steer message would land), so it keeps the same position on every request. Summaries already in the list (runtime delivery, or a list rebuilt on reload) are not added again.
+- Tool turns of later prompts are no longer dropped. `turn_end` numbered its batch with Pi's `event.turnIndex`, which restarts at 0 on every prompt, while the prune frontier numbers every assistant message on the branch. From the second prompt on, early turns looked already attempted: `every-turn` skipped their prune and `agent-message` stopped queueing them. `turn_end` now uses the branch-wide number.
+- The stub now says the summary follows the pruned results instead of preceding them. The stub text changes once, so the first request after upgrading re-reads previously cached context.
+
+### Added
+
+- `npm test`: builds the bundle, then runs wiring tests against it with a fake Pi runtime that keeps the session file and the agent's message list apart and deep-clones the list before the `context` hook, as Pi does.
+
 ## 1.5.2 - 2026-09-17
 
 Documentation and packaging only; no behaviour change.

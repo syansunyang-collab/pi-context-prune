@@ -12,7 +12,8 @@ Written because a long agent session can spend more on re-reading its own tool o
 > - the prune index is rebuilt on demand in the `context` hook (first request after a reload is pruned);
 > - `summarizerMaxCharsPerResult` config key and `/pruner max-chars`;
 > - OpenCode session headers on the summarizer request;
-> - summarization started from a lifecycle hook is bound to the run's abort signal and to a deadline, so Stop works while a summary is in flight.
+> - summarization started from a lifecycle hook is bound to the run's abort signal and to a deadline, so Stop works while a summary is in flight;
+> - summaries stored in the session reach the model within the same session (before, only after a reload), and tool turns of later prompts are no longer dropped as already attempted (1.5.3).
 >
 > Published on npm as [`@syansunyang/pi-context-prune`](https://www.npmjs.com/package/@syansunyang/pi-context-prune) from 1.5.0. Measured effect, method and per-run data: [`bench/`](bench/README.md).
 
@@ -50,7 +51,7 @@ Once installed, the extension is auto-loaded every time you run `pi`. Re-run the
 Releases are also git tags on this repository (`dist/` is committed, so no build step runs on install):
 
 ```bash
-pi install git:github.com/syansunyang-collab/pi-context-prune@v1.5.0
+pi install git:github.com/syansunyang-collab/pi-context-prune@v1.5.3
 ```
 
 ### Try without installing

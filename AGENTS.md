@@ -52,14 +52,14 @@ Wires all modules together and registers Pi event handlers:
 - **`syncToolActivation()`** — activates or deactivates the `context_prune` tool in the Pi active-tools list based on whether `enabled && pruneOn === "agentic-auto"`. Uses `pi.getActiveTools()` / `pi.setActiveTools()` (ExtensionAPI, not ExtensionContext).
 - **`session_start`** — loads config from `~/.pi/agent/context-prune/settings.json`, rebuilds the in-memory index and stats accumulator, clears `pendingBatches`, updates the footer status widget, calls `syncToolActivation()`, and notifies the user of the loaded state.
 - **`session_tree`** — rebuilds the index and stats accumulator after branch navigation (pending batches and stats belong to the current branch).
-- **`turn_end`** — captures the batch (filtering out any `context_prune` tool call to avoid re-queuing agentic-auto housekeeping), pushes to `pendingBatches`. Behavior depends on `pruneOn` mode:
+- **`turn_end`** — captures the batch (filtering out any `context_prune` tool call to avoid re-queuing agentic-auto housekeeping), pushes to `pendingBatches`. The batch is numbered by its position among the branch's assistant messages (`branchTurnIndex`), the numbering the frontier and `captureUnindexedBatchesFromSession` use; Pi's `event.turnIndex` restarts at 0 on every prompt and does not match it. Behavior depends on `pruneOn` mode:
   - `every-turn`: flushes immediately with `delivery: "session"`.
   - `on-context-tag` / `on-demand` / `agent-message` / `agentic-auto`: queues and notifies the user of pending count and trigger.
 - **`tool_execution_end`** — when `event.toolName` is `context_checkpoint` (or the legacy `context_tag`) and mode is `on-context-tag`, calls `flushPending` with `delivery: "runtime"`.
 - **`message_end`** — when mode is `agent-message` and the message is a final text-only assistant response (no tool calls), calls `flushPending` with `delivery: "session"`. This is the primary flush path for `agent-message` mode.
 - **`agent_end`** — safety net: if pending batches still remain (e.g. because no `message_end` fired before session shutdown), updates the status widget to show the pending count. Does **not** attempt a best-effort LLM call here to avoid starting async work after Pi may have already disposed the session.
 - **`before_agent_start`** — when mode is `agentic-auto` and pruning is enabled, appends `AGENTIC_AUTO_SYSTEM_PROMPT` to the system prompt so the LLM knows when and how to call `context_prune`.
-- **`context`** — filters the message array sent to the LLM, removing `ToolResultMessage` entries that have been summarized. Additionally, when `pruneOn === "agentic-auto"` and `remindUnprunedCount` is true, appends a `<pruner-note>` reminder to the last toolResult telling the LLM how many unpruned tool calls are currently in context. Returns `undefined` (no change) if neither pruning nor annotation modified the list.
+- **`context`** — filters the message array sent to the LLM, removing `ToolResultMessage` entries that have been summarized, then adds each summary the array lacks (`injectSummaryMessages`): a summary flushed with `delivery: "session"` is in the session file but not in the running agent's message list until a reload. Additionally, when `pruneOn === "agentic-auto"` and `remindUnprunedCount` is true, appends a `<pruner-note>` reminder to the last toolResult telling the LLM how many unpruned tool calls are currently in context. Returns `undefined` (no change) if neither pruning nor annotation modified the list.
 
 ### `src/types.ts` — Shared types and constants
 Single source of truth for all interfaces and constants:
@@ -117,6 +117,7 @@ Maintains the runtime `Map<toolCallId, ToolCallRecord>` and handles session pers
 
 ### `src/pruner.ts` — Context message filter
 - **`pruneMessages(messages, indexer)`** — filters the `context` event's message array. Drops any message with `role === "toolResult"` whose `toolCallId` is present in the index. All other messages (including `AssistantMessage` tool-call blocks that carry the IDs) are kept so the model can still reference them when calling `context_tree_query`.
+- **`injectSummaryMessages(messages, branch)`** — adds every `context-prune-summary` entry of the branch that the message array does not already contain (matched by content), right after the tool results of the last call the summary covers. The position is the same on every request, so the cached prefix holds. Summaries whose results are no longer in the array are skipped.
 
 ### `src/reminder.ts` — Unpruned-count reminder (agentic-auto only)
 - **`countUnprunedToolCalls(messages, indexer)`** — walks `AssistantMessage` `toolCall` content blocks and counts those whose id is NOT in the indexer.

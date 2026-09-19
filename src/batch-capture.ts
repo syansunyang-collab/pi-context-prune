@@ -78,8 +78,9 @@ export function captureUnindexedBatchesFromSession(
   // turnCounter increments for EVERY assistant message (not just prunable ones).
   // This makes turnIndex stable across multiple prune cycles: pruning removes
   // ToolResultMessages from the context event but leaves AssistantMessages in the
-  // session branch, so the count of all assistant messages never decreases and
-  // always matches Pi's own event.turnIndex numbering.
+  // session branch, so the count of all assistant messages never decreases. turn_end
+  // uses the same branch-wide numbering (branchTurnIndex in index.ts); Pi's own
+  // event.turnIndex restarts at 0 on every prompt and does not match it.
   let turnCounter = 0;
 
   // userTurnGroup increments on every user message seen while walking the branch.

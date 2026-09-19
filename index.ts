@@ -18,7 +18,7 @@ import { loadConfig } from "./src/config.js";
 import { captureBatch, captureUnindexedBatchesFromSession, groupBatchesByMode } from "./src/batch-capture.js";
 import { summarizeBatch, summarizeBatches } from "./src/summarizer.js";
 import { ToolCallIndexer } from "./src/indexer.js";
-import { pruneMessages } from "./src/pruner.js";
+import { injectSummaryMessages, pruneMessages } from "./src/pruner.js";
 import { annotateWithUnprunedCount, countUnprunedToolCalls } from "./src/reminder.js";
 import { registerQueryTool } from "./src/query-tool.js";
 import { registerCommands, setPruneStatusWidget } from "./src/commands.js";
@@ -148,6 +148,22 @@ export default function (pi: ExtensionAPI) {
     const remaining = toolCalls.slice(originalIndex + 1);
     if (remaining.length === 0) return null;
     return { ...batch, toolCalls: remaining };
+  };
+
+  // The frontier and the batches captured from the session number every assistant message on
+  // the branch, while Pi restarts event.turnIndex at 0 on every prompt. Comparing the two made
+  // the early turns of each later prompt look already attempted, so trimBatchToPendingRange
+  // dropped them. At turn_end this turn's assistant message is the last one on the branch.
+  const branchTurnIndex = (ctx: any, fallback: number): number => {
+    try {
+      const assistants = ctx.sessionManager
+        .getBranch()
+        .filter((entry: any) => entry.type === "message" && entry.message?.role === "assistant").length;
+      return assistants > 0 ? assistants - 1 : fallback;
+    } catch {
+      // stale ctx: no branch to count
+      return fallback;
+    }
   };
 
   const restoreBatches = (batches: CapturedBatch[]) => {
@@ -478,7 +494,7 @@ export default function (pi: ExtensionAPI) {
     const capturedBatch = captureBatch(
       event.message,
       event.toolResults,
-      event.turnIndex,
+      branchTurnIndex(ctx, event.turnIndex),
       Date.now()
     );
     const batch = trimBatchToPendingRange({
@@ -567,6 +583,11 @@ export default function (pi: ExtensionAPI) {
       const pruned = pruneMessages(messages, indexer);
       if (pruned !== messages) {
         messages = pruned;
+        changed = true;
+      }
+      const withSummaries = injectSummaryMessages(messages, ctx.sessionManager.getBranch());
+      if (withSummaries !== messages) {
+        messages = withSummaries;
         changed = true;
       }
     }

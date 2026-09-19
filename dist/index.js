@@ -585,12 +585,47 @@ function pruneMessages(messages, indexer) {
       content: [
         {
           type: "text",
-          text: `${PRUNED_RESULT_MARKER} This ${msg.toolName ?? "tool"} result was summarized and pruned from context; see the pruner-summary message above. Full output: context_tree_query with id "${msg.toolCallId}".`
+          text: `${PRUNED_RESULT_MARKER} This ${msg.toolName ?? "tool"} result was summarized and pruned from context; see the pruner-summary message that follows. Full output: context_tree_query with id "${msg.toolCallId}".`
         }
       ]
     };
   });
   return changed ? out : messages;
+}
+function injectSummaryMessages(messages, branch) {
+  const contentKey = (content) => typeof content === "string" ? content : JSON.stringify(content);
+  const present = new Set(
+    messages.filter((m) => m?.role === "custom" && m.customType === CUSTOM_TYPE_SUMMARY).map((m) => contentKey(m.content))
+  );
+  const inserts = /* @__PURE__ */ new Map();
+  for (const entry of branch) {
+    if (entry?.type !== "custom_message" || entry.customType !== CUSTOM_TYPE_SUMMARY) continue;
+    if (present.has(contentKey(entry.content))) continue;
+    const ids = new Set(normalizeSummaryToolCallRefs(entry.details).map((ref) => ref.toolCallId));
+    let at = -1;
+    messages.forEach((m, i) => {
+      if (m?.role === "toolResult" && ids.has(m.toolCallId)) at = i;
+    });
+    if (at < 0) continue;
+    while (messages[at + 1]?.role === "toolResult") at++;
+    const list = inserts.get(at) ?? [];
+    list.push({
+      role: "custom",
+      customType: entry.customType,
+      content: entry.content,
+      display: entry.display,
+      details: entry.details,
+      timestamp: new Date(entry.timestamp).getTime()
+    });
+    inserts.set(at, list);
+  }
+  if (inserts.size === 0) return messages;
+  const out = [];
+  messages.forEach((m, i) => {
+    out.push(m);
+    out.push(...inserts.get(i) ?? []);
+  });
+  return out;
 }
 
 // src/reminder.ts
@@ -4536,6 +4571,14 @@ function index_default(pi) {
     if (remaining.length === 0) return null;
     return { ...batch, toolCalls: remaining };
   };
+  const branchTurnIndex = (ctx, fallback) => {
+    try {
+      const assistants = ctx.sessionManager.getBranch().filter((entry) => entry.type === "message" && entry.message?.role === "assistant").length;
+      return assistants > 0 ? assistants - 1 : fallback;
+    } catch {
+      return fallback;
+    }
+  };
   const restoreBatches = (batches) => {
     pendingBatches.unshift(...batches);
   };
@@ -4769,7 +4812,7 @@ function index_default(pi) {
     const capturedBatch = captureBatch(
       event.message,
       event.toolResults,
-      event.turnIndex,
+      branchTurnIndex(ctx, event.turnIndex),
       Date.now()
     );
     const batch = trimBatchToPendingRange({
@@ -4837,6 +4880,11 @@ function index_default(pi) {
       const pruned = pruneMessages(messages, indexer);
       if (pruned !== messages) {
         messages = pruned;
+        changed = true;
+      }
+      const withSummaries = injectSummaryMessages(messages, ctx.sessionManager.getBranch());
+      if (withSummaries !== messages) {
+        messages = withSummaries;
         changed = true;
       }
     }
